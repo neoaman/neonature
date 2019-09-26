@@ -21,25 +21,29 @@
     <div class="col-lg-8 col-md-10 mx-auto">
 
       <!-- Todo : Fetch it using for loop from the database -->
+    {% for post in postr %}
 
-      <div class="post-preview">
-        <a href="post.html">
+            <div class="post-preview">
+        <a href="/post/{{post.slug}}">
           <h2 class="post-title">
-            Something no one care about i.e. Equlibrium.
+              {{post.title}}
           </h2>
           <h3 class="post-subtitle">
-            Every Problem comes for new Solutions.
+              {{post.tagline}}
           </h3>
         </a>
         <p class="post-meta">Posted by
-          <a href="#">Start Bootstrap</a>
-          on September 24, 2019</p>
+          <a href="#">Neo</a>
+          on {{post.date}}</p>{{post.content[0:43]}}...
       </div>
       <hr>
 
+    {% endfor %}
+
       <!-- Pager -->
       <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <a class="btn btn-primary float-left" href="{{prev}}">&larr; Older Posts </a>
+        <a class="btn btn-primary float-right" href="{{next}}">Newer Post &rarr;</a>
       </div>
     </div>
   </div>
