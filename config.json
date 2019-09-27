@@ -10,12 +10,12 @@
     "blog_name": "Neo The Nature",
     "tagline": "Nature Needs Equilibrium",
     "gmail_user" : "amanthe001@gmail.com",
-    "gmail_pass" : "tkhwgsydbuymxhdx",
+    "gmail_pass" : "<enter your less secure app password here>",
     "no_of_posts" : 2,
     "login-image" : "neo-bg.jpg",
     "login-icon" : "login-icon.jpg",
-    "admin_user" : "amanthe001@gmail.com",
-    "admin_pass" : "P@ssw0rd",
+    "admin_user" : "aman@gmail.com",
+    "admin_pass" : "addpassword",
     "upload_location" : "D:\\STUDY PROCESS\\Flask\\tute2\\static\\img"
   }
 
