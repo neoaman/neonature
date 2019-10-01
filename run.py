@@ -174,6 +174,5 @@ def contact():
     return render_template('contact.html',params=params)
 
 
-app.run(debug = True)
 
 
