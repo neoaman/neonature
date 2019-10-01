@@ -68,10 +68,8 @@ def home():
     else:
         next = "/?page=" + str(page + 1)
         prev = "/?page=" + str(page - 1)
+    return render_template('index.html', params=params, postr=posts)  # ,prev=prev,next=next)
 
-
-
-    return render_template('index.html',params=params,postr=posts,prev=prev,next=next)
 
 
 @app.route("/dashboard", methods=['GET','POST'])
@@ -88,8 +86,6 @@ def log_in():
             return render_template('dashboard.html', params=params,posts=posts)
         else:
             return render_template('login.html', params=params)
-
-
         # Redirect to admin
     return render_template('login.html',params=params)
 @app.route("/logout")
@@ -125,7 +121,6 @@ def edit_po(sno):
             content = request.form.get('content')
             img_file =  request.form.get('img_file')
             date = datetime.now()
-
             if sno == '0':
                 post = Posts(title = box_title, slug=slug,content=content,img_file=img_file,tagline=tline,date=date)
                 db.session.add(post)
