@@ -21,7 +21,7 @@ app.config.update(
     MAIL_USERNAME = params['gmail_user'],
     MAIL_PASSWORD = params['gmail_pass']
 )
-
+# I am amaan
 mail = Mail(app)
 if (local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
