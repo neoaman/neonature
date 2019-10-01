@@ -14,6 +14,7 @@ local_server = True
 app = Flask(__name__)
 app.secret_key = 'super-secret-key'
 app.config['UPLOAD_FOLDER'] = params['upload_location']
+"""
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
@@ -21,8 +22,10 @@ app.config.update(
     MAIL_USERNAME = params['gmail_user'],
     MAIL_PASSWORD = params['gmail_pass']
 )
+
 # I am amaan
 mail = Mail(app)
+"""
 if (local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
@@ -161,11 +164,13 @@ def contact():
         entry = Contacts(name =name, phone_num = phone, mes = message, email=email ,date=datetime.now() )       #LHS = Database name and RHS = request.get name
         db.session.add(entry)
         db.session.commit()
+        """
         mail.send_message("New Message From Blog" + name,
                   sender = email,
                   recipients=[params['gmail_user']],
                   body=message + "\n" + phone
                   )
+        """
     return render_template('contact.html',params=params)
 
 

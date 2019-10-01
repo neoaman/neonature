@@ -15,6 +15,7 @@ local_server = True
 app = Flask(__name__)
 app.secret_key = 'super-secret-key'
 app.config['UPLOAD_FOLDER'] = params['upload_location']
+
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
@@ -24,6 +25,7 @@ app.config.update(
 )
 
 mail = Mail(app)
+
 if (local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
