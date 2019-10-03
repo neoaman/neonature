@@ -48,6 +48,7 @@ class Posts(db.Model):
     date = db.Column(db.String(12), nullable=True)
     slug = db.Column(db.String(21), nullable=False)
     img_file = db.Column(db.String(21), nullable=False)
+    url = db.Column(db.String(60), nullable=True)
 
 @app.route("/")
 def home():
@@ -121,9 +122,11 @@ def edit_po(sno):
             slug= request.form.get('slug')
             content = request.form.get('content')
             img_file =  request.form.get('img_file')
+            url = request.form.get('url')
             date = datetime.now()
+
             if sno == '0':
-                post = Posts(title = box_title, slug=slug,content=content,img_file=img_file,tagline=tline,date=date)
+                post = Posts(title = box_title, slug=slug,content=content,img_file=img_file,tagline=tline,date=date,url=url)
                 db.session.add(post)
                 db.session.commit()
             else:
@@ -134,6 +137,7 @@ def edit_po(sno):
                 post.content = content
                 post.img_file = img_file
                 post.date = date
+                post.url=url
                 db.session.commit()
                 return redirect('/edit/'+sno)
         post = Posts.query.filter_by(sno = sno).first()

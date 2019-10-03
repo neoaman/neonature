@@ -15,8 +15,8 @@
     "login-image" : "neo-bg.jpg",
     "login-icon" : "login-icon.jpg",
     "admin_user" : "aman@gmail.com",
-    "admin_pass" : "addpassword",
-    "upload_location" : "D:\\STUDY PROCESS\\Flask\\tute2\\static\\img"
+    "admin_pass" : "password",
+    "upload_location" : "D:\\neonature\\neonature\\static\\img"
   }
 
 }
