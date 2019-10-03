@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+<header class="masthead" style="background-image: url('{{ url_for( 'static', filename='img/home-bg.jpg')}}')">
+<div class="overlay"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="site-heading">
+        <h1> {{params['blog_name']}} </h1>
+        <span class="subheading">{{params['tagline']}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+<body>
+<h1>Fillup the requirments</h1>
+<form name="urlload" action="/niswas" method="post" style="background-image: url('{{ url_for( 'static', filename='img/post-bg.jpg')}}')">
+    <input type="text"  placeholder="Url for csv file" id="urlforcsv" name = 'urlforcsv' required data-validation-required-message="Please enter url for your data" >
+    <input type="text" placeholder="column number" id = "coln" name = "col1" >
+    <button type="submit" >Submit</button>
+</form>
+
+<h1>Here is your plot</h1>
+{% set m = msg %}
+{% set f = col %}
+<img src="{{ url_for( 'static', filename= f )}}">
+<h2>{{m}}</h2>
+
+</body>
+{% endblock %}

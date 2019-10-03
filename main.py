@@ -6,6 +6,10 @@ from datetime import datetime
 import json
 from flask_mail import Mail
 from werkzeug.utils import secure_filename
+import pandas as pd
+import matplotlib.pyplot as plt
+import time
+
 
 with open("config.json") as c:
     params = json.load(c)["params"]
@@ -178,7 +182,26 @@ def contact():
                   )
     return render_template('contact.html',params=params)
 
-
+@app.route("/niswas", methods = ['GET','POST'])
+def plotattr():
+    if request.method =="POST" :
+        url = request.form.get("urlforcsv")
+        columnno = request.form.get("col1")
+        cl = int(columnno)
+        global df
+        df = pd.read_csv(url)
+        plt.cla() # Clear axis
+        plt.clf() # Clear figure
+        plt.close()  # Close a figure window
+        plt.plot(df.iloc[:, cl])
+        plt.savefig("D:\\neonature\\neonature\\static\\img\\plot1.png",transpharent =False)
+        global colnames
+        colnames = "img/plot1.png"
+        Message = "The data is {}".format(df.columns[cl])
+    else :
+        colnames = "img/neo-py.jpg"
+        Message = "Sorry"
+    return render_template('plots.html', params=params, col=colnames, msg=Message)
 app.run(debug = True)
 
 
