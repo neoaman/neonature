@@ -7,6 +7,7 @@ import json
 from flask_mail import Mail
 from werkzeug.utils import secure_filename
 import matplotlib.pyplot as plt
+import pandas as pd
 
 with open("/home/Amanneo/neo/config2.json") as c:
     params = json.load(c)["params"]
